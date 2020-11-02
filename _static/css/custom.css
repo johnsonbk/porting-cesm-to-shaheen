@@ -2,7 +2,8 @@ h1,h2,.rst-content .toctree-wrapper p.caption,h3,h4,h5,h6,legend{margin-top:0;fo
 
 body {font-family: Poppins, Arial, Helvetica, sans-serif; font-weight:400; color: #616161;}
 .wy-nav-side{background-color: #454648;}
-.wy-side-nav-search{background-color: #DBE2E9}
+.wy-side-nav-search{background-color: #DBE2E9;}
+.wy-side-nav-search>div.version{color: #012169 !important;}
 .wy-menu-vertical header, .wy-menu-vertical p.caption{color: #B1D603;}
 .wy-menu-vertical a:hover, .wy-menu-vertical a:active { background-color: #1A658F; color: #d9d9d9; }
 .wy-menu-vertical a, .wy-menu-vertical a:visited { color: #d9d9d9; }
