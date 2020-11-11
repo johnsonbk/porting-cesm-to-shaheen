@@ -6,11 +6,41 @@
 Porting CESM to Shaheen Documentation
 =====================================
 
+
 .. toctree::
    :maxdepth: 2
+   :hidden:
+   :caption: Shaheen
+   
+   /shaheen/environment
+   /shaheen/compiling-dart
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+   :caption: Configuration
+   
+   /configuration/libraries
+
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
    :caption: Performance
 
    /performance/load-balancing-tool
+   /performance/case-timing-data
+   /performance/file-striping
+
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+   :caption: Port Validation
+
+   /port-validation/ensemble-consistency-tests
+   /port-validation/regression-tests
+
 
 Indices and tables
 ==================
