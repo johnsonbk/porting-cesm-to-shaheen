@@ -2,6 +2,11 @@
 Environment
 ###########
 
+User Guide
+==========
+
+`Shaheen II User Guide <https://www.hpc.kaust.edu.sa/user_guide>`_
+
 Training Materials
 ==================
 
@@ -43,18 +48,4 @@ Again, according to the `documentation
   Compiler Environment. Compiler flags do matter – be ready to spend some
   effort finding the best ones for your application.*
 
-Job Scheduling
-==============
 
-Shaheen uses the Simple Linux Utility for Resource Management (SLURM) system 
-for job scheduling.
-
-Since the status and kill commands for SLURM differ from PBS, it is useful to
-set up common aliases, for example in ``.bashrc``:
-
-.. code-block:: bash
-
-  alias jkill='scancel'
-  alias jstat='squeue -u $USER'
-
-The standard job queue on Shaheen is ``workq``.

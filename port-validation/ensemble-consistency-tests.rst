@@ -8,8 +8,8 @@ trusted machine. Once the ensembles complete, history files are uploaded to the
 verification tests page of the `CESM2 python tools website
 <http://www.cesm.ucar.edu/models/cesm2/python-tools/>`_.
 
-.. note:: When running these tests initially on Shaheen, the scripts weren't 
-   able to run to completion because they weren't compabile with python3. I 
+.. note:: When conduction these tests initially on Shaheen, the scripts weren't 
+   able to run to completion because they weren't compatible with python3. I 
    rewrote the relevant parts of the scripts and made a `pull request to
    Allison Baker's PyCECT repository <https://github.com/NCAR/PyCECT/pull/8>`_.
    Thus, when running these tests on Shaheen, it was necessary to use python 

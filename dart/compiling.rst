@@ -1,6 +1,6 @@
-##############
-Compiling DART
-##############
+#########
+Compiling
+#########
 
 Programming Environment
 =======================

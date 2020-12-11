@@ -13,15 +13,27 @@ Porting CESM to Shaheen Documentation
    :caption: Shaheen
    
    /shaheen/environment
-   /shaheen/compiling-dart
+   /shaheen/slurm
 
 .. toctree::
    :maxdepth: 2
    :hidden:
-   :caption: Configuration
-   
-   /configuration/libraries
+   :caption: DART
 
+   /dart/compiling
+   /dart/configuration-notes
+   /dart/generating-the-initial-ensemble
+   /dart/sampling-error-table
+   /dart/recovering-from-failed-assimilation
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+   :caption: CESM
+
+   /cesm/grid-and-compset
+   /cesm/libraries
+   /cesm/list-of-attempts
 
 .. toctree::
    :maxdepth: 2
@@ -31,7 +43,8 @@ Porting CESM to Shaheen Documentation
    /performance/load-balancing-tool
    /performance/case-timing-data
    /performance/file-striping
-
+   /performance/darshan
+   /performance/intel-vtune
 
 .. toctree::
    :maxdepth: 2
