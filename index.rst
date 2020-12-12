@@ -6,6 +6,15 @@
 Porting CESM to Shaheen Documentation
 =====================================
 
+This documents our attempt to port the `Community Earth System Model
+(CESM) <https://www.cesm.ucar.edu/>`_ to `Shaheen II
+<https://www.hpc.kaust.edu.sa/>`_
+which is a Cray XC40 at `King Abdullah University of Science and Technology
+<https://www.kaust.edu.sa/en>`_.
+
+The purpose of porting CESM is to test data assimilation algorithms using
+1000-member ensembles of the `Community Atmosphere Model (CAM)
+<https://www.cesm.ucar.edu/models/cesm2/atmosphere/>`_.
 
 .. toctree::
    :maxdepth: 2
@@ -54,10 +63,3 @@ Porting CESM to Shaheen Documentation
    /port-validation/ensemble-consistency-tests
    /port-validation/regression-tests
 
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
