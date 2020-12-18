@@ -32,7 +32,7 @@ The script comments say that:
   1) the CASEROOT, and
   2) the assimilation cycle number in this CESM job
 
-To continue past a trival exit such as this one, The task is to rerun
+To continue past a trival exit such as this one, the task is to rerun
 ``assimilate.csh``. This script must be run from a batch job in order for the
 environmental variables to be set properly.
 

@@ -5,11 +5,35 @@ List of Attempts
 It took very, very many attempts to get a CAM ensemble performing well on 
 Shaheen. 
 
+Trial 095
+=========
+
+Building with 500 ensemble members since we will not be able to get through the 
+experiment, even with 4 million core hours given the current level of
+performance efficiency.
+
+.. code-block:: bash
+
+   $ cd /lustre/project/k1421/cases/FHIST_BGC.f09_d025.093.e500
+
+Also made sure that ``DEBUG=FALSE`` in ``setup_advanced_Rean``:
+
+.. code-block::
+
+   # DEBUG = TRUE implies turning on run and compile time debugging.
+   # INFO_DBUG level of debug output, 0=minimum, 1=normal, 2=more, 3=too much.
+   ./xmlchange DEBUG=FALSE
+   ./xmlchange INFO_DBUG=0
+
 Trial 094
 =========
 
 Rebuilding with 1000 members in case the efforts to fix the broken 
 Trial 090 take much longer than expected.
+
+.. code-block::
+
+   ./xmlchange DOUT_S=TRUE
 
 Trial 093
 =========

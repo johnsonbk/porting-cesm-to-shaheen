@@ -67,7 +67,15 @@ To build with Intel compilers using ``PrgEnv-intel`` and ``mkl``:
    --libdir      /opt/cray/pe/netcdf/4.6.3.2/INTEL/19.0/lib
    ...
 
-In ``mkmf.template`` this configuration works:
+Best Working Configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The following is the best configuration we found for ``mkmf.template``. We had
+an earlier working version, described be low in `Original Working
+Configuration`_ that had a different AVX flag that worked but the
+compiler threw a strange warning.
+
+In ``mkmf.template`` this configuration works without throwing errors:
 
 .. code-block::
 
@@ -76,13 +84,30 @@ In ``mkmf.template`` this configuration works:
    FC = ftn
    LD = ftn
    INCS = -I/opt/cray/pe/netcdf/4.6.3.2/include
-   LIBS = -L/opt/cray/pe/netcdf/4.6.3.2/INTEL/19.0/lib -lnetcdff -lnetcdf FFLAGS  = -O -assume buffered_io -xAVX -mkl $(INCS)
+   LIBS = -L/opt/cray/pe/parallel-netcdf/1.11.1.1/INTEL/19.0/lib -lnetcdff -lnetcdf
+   FFLAGS  = -O2 -xCORE-AVX2 -assume buffered_io -mkl $(INCS)
    LDFLAGS = $(FFLAGS) $(LIBS)
 
-When running ``quickbuild.csh`` for lorenz_63 and lorenz_96, the compiler
+Original Working Configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In ``mkmf.template`` this configuration also works:
+
+.. code-block::
+
+   MPIFC = ftn
+   MPILD = ftn
+   FC = ftn
+   LD = ftn
+   INCS = -I/opt/cray/pe/netcdf/4.6.3.2/include
+   LIBS = -L/opt/cray/pe/netcdf/4.6.3.2/INTEL/19.0/lib -lnetcdff -lnetcdf
+   FFLAGS  = -O -assume buffered_io -xAVX -mkl $(INCS)
+   LDFLAGS = $(FFLAGS) $(LIBS)
+
+But when running ``quickbuild.csh`` for lorenz_63 and lorenz_96, the compiler
 prints out a perplexing warning:
 
-::
+:: code-block::
 
    ifort: command line warning #10121: overriding '-xCORE-AVX2' with '-xAVX'
 
