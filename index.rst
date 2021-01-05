@@ -38,11 +38,21 @@ The purpose of porting CESM is to test data assimilation algorithms using
 .. toctree::
    :maxdepth: 2
    :hidden:
+   :caption: Diagnostics
+
+   /diagnostics/obs-diag
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
    :caption: CESM
 
    /cesm/grid-and-compset
    /cesm/libraries
+   /cesm/macros-make
    /cesm/list-of-attempts
+   /cesm/cime-comp-mod
+   /cesm/config-machines
 
 .. toctree::
    :maxdepth: 2

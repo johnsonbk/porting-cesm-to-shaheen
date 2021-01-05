@@ -3,7 +3,147 @@ List of Attempts
 ################
 
 It took very, very many attempts to get a CAM ensemble performing well on 
-Shaheen. 
+Shaheen.
+
+Trial 102
+=========
+
+While we're waiting, why don't we try to build with just the serial NetCDF 
+library in ``cray-netcdf-hdf5parallel`` to see if that's faster.
+
+Removed this line from ``config_machines.xml``:
+
+.. code-block:: xml
+
+   <env name="PNETCDF_PATH">/opt/cray/pe/netcdf-hdf5parallel/4.6.3.2/INTEL/19.0</env>
+
+Trial 101
+=========
+
+Tried various configurations of the linker flag in the Makefile:
+
+.. code-block::
+
+   312 SLIBS += -L$(LIB_PNETCDF) -lnetcdff_parallel
+
+.. code-block::
+
+   312 SLIBS += -L$(LIB_PNETCDF) -lnetcdff_parallel -lnetcdf_parallel
+
+.. code-block::
+
+   312 SLIBS += -L$(LIB_PNETCDF) -lpnetcdf
+
+These all error out.
+
+.. error::
+
+   .. code-block::
+
+      -- Configuring incomplete, errors occurred!
+      See also "/lustre/scratch/x_johnsobk/FHIST_BGC.f09_d025.101.e0003/bld/intel/mpt/nodebug/nothreads/pio/pio1/CMakeFiles/CMakeOutput.log".
+      gmake: Leaving directory '/lustre/scratch/x_johnsobk/FHIST_BGC.f09_d025.101.e0003/bld/intel/mpt/nodebug/nothreads/pio/pio1'
+      cat: Filepath: No such file or directory
+      cat: Srcfiles: No such file or directory
+      Building PIO with netcdf support 
+      CMake Error at /sw/xc40cle7/cmake/3.13.4/sles15_gcc7.4.1/install/share/cmake-3.13/Modules/FindPackageHandleStandardArgs.cmake:137 (message):
+      Could NOT find PnetCDF_Fortran (missing: PnetCDF_Fortran_LIBRARY
+      PnetCDF_Fortran_INCLUDE_DIR)
+
+Trial 100
+=========
+
+Trial 099 showed us that we can't simply remove NetCDF from the build. Let's try
+to get the build to compile with ``netcdf-hdf5parallel``. We tried this earlier
+and couldn't get the linking flag to work. Brian Dobbins suggested editing the
+makefile.
+
+This attempt requires us to make several changes to ``config_machines.xml``:
+
+.. code-block:: xml
+
+   <modules mpilib="!mpi-serial">
+      <command name="load">cray-netcdf-hdf5parallel/4.6.3.2</command>
+   </modules>
+
+   <environment_variables>
+      <env name="PNETCDF_PATH">/opt/cray/pe/netcdf-hdf5parallel/4.6.3.2/INTEL/19.0</env>
+   </environment_variables>
+
+Without changing the makefile, we get the following error.
+
+.. error::
+
+   .. code-block::
+
+   -- Configuring incomplete, errors occurred!
+   See also "/lustre/scratch/x_johnsobk/FHIST_BGC.f09_d025.100.e0003/bld/intel/mpt/nodebug/nothreads/pio/pio1/CMakeFiles/CMakeOutput.log".
+   gmake: Leaving directory '/lustre/scratch/x_johnsobk/FHIST_BGC.f09_d025.100.e0003/bld/intel/mpt/nodebug/nothreads/pio/pio1'
+
+Thus we attempt to edit ``/lustre/project/k1421/cesm2_1_3/cime/scripts/Tools/Makefile``.
+
+.. code-block::
+
+   312    SLIBS += -L$(LIB_PNETCDF) -lpnetcdf
+
+to reflect the name of the static library:
+
+.. code-block::
+
+   312 SLIBS += -L$(LIB_PNETCDF) -lnetcdff_parallel
+
+Even attempted to make a spoof directory:
+
+<env name="PNETCDF_PATH">"/lustre/project/k1421/netcdf-hdf5parallel/4.6.3.2/INTEL/19.0</env>
+
+with symbolic links:
+
+.. code-block::
+
+   $ ln -s /opt/cray/pe/netcdf-hdf5parallel/4.6.3.2/INTEL/19.0/lib/libnetcdff_parallel.a lpnetcdff.a
+   $ ln -s /opt/cray/pe/netcdf-hdf5parallel/4.6.3.2/INTEL/19.0/lib/libnetcdf_parallel.a lpnetcdf.a
+
+None of this works.
+
+Trial 099
+=========
+
+Commenting out ``NETCDF_PATH`` from ``config_machines.xml`` to see if that
+affects the initialization time. We are trying to test the idea that only
+allowing the build to use parallel netCDF might work better.
+
+Also **removing** these lines from ``config_compilers.xml``:
+
+.. code-block:: xml
+
+   <SLIBS>
+      <append> -L$(NETCDF_PATH) -lnetcdff -Wl,--as-needed,-L$(NETCDF_PATH)/lib -lnetcdff -lnetcdf </append>
+   </SLIBS>
+   <NETCDF_PATH>$ENV{NETCDF_PATH}</NETCDF_PATH>
+
+This errors out.
+
+.. error::
+
+   NETCDF not found: Define NETCDF_PATH or NETCDF_C_PATH and NETCDF_FORTRAN_PATH
+
+Trial 098
+=========
+
+Changing ``MAX_TASKS_PER_NODE`` back to 32 since we haven't figured out how
+it's used in ``setup_advanced_Rean`` and why it's doubling the requested nodes.
+
+Building a 3 member ensemble for determining a baseline for Init Time.
+
+An example timing file from ensemble member 0003 is here:
+
+.. code-block::
+
+   $ vim /lustre/project/k1421/cases/FHIST_BGC.f09_d025.098.e0003/timing/cesm_timing_0003.FHIST_BGC.f09_d025.098.e0003.17867122.201223-212516
+   Init Time   :    1375.139 seconds
+   Run Time    :     266.362 seconds     1065.447 seconds/day
+
+The Init Time of ``1375.139 seconds`` is our benchmark for improvement.
 
 Trial 095
 =========
@@ -624,13 +764,13 @@ This fails to build. Remember:
 
 What to do next? I think the issue is it's linking netcdf rather than pnetcdf.
 
-Spitballing ideas --
-#################################################
-1. The directory we're linking to is wrong. 
-There's an L directory and an I directory, right?
-#################################################
--L goes to the lib directory
--I goes to the include directory
+Spitballing ideas
+-----------------
+
+The directory we're linking to is wrong.
+
+- ``-L`` goes to the lib directory
+- ``-I`` goes to the include directory
 
 Trial 064
 =========
