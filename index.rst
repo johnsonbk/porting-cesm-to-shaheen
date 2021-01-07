@@ -49,7 +49,6 @@ The purpose of porting CESM is to test data assimilation algorithms using
 
    /cesm/grid-and-compset
    /cesm/libraries
-   /cesm/macros-make
    /cesm/list-of-attempts
    /cesm/cime-comp-mod
    /cesm/config-machines
