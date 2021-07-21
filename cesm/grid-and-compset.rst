@@ -71,7 +71,14 @@ Cheyenne
    cesm2.1.3 build script doesn't crash because of attempted concatenation of a 
    string and an int. There is no need to create a python 2.7 environment.
 
-.. code-block:
+.. warning::
+
+   Running a build of CESM on a Cheyenne login node will likely result in one
+   of the daemons killing the build script due to the build "using an excessive
+   amount of the total available CPU resources." Thus use the ``qcmd`` build 
+   wrapper and options for the ``./case.build`` script.
+
+.. code-block::
 
    $ cd /glade/work/johnsonb/cesm2_1_3/cime/scripts
    $  ./create_newcase --case /glade/work/johnsonb/cases/FHIST.f09_f09_mg17.e001.n0003 --compset FHIST --res f09_f09_mg17 --machine cheyenne --project P86850054 --run-unsupported --ninst 3 --multi-driver --walltime 2:00:00
@@ -79,7 +86,7 @@ Cheyenne
    Creating Case directory /glade/work/johnsonb/cases/FHIST.f09_f09_mg17.e001.n0003
    $ cd /glade/work/johnsonb/cases/FHIST.f09_f09_mg17.e001.n0003
    $ ./case.setup
-   $ ./case.build
+   $ qcmd -q share -l select=1 -A P86850054 -- ./case.build
    [ ... ]
    MODEL BUILD HAS FINISHED SUCCESSFULLY
    $ ./case.submit -M begin,end
