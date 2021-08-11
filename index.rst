@@ -71,6 +71,7 @@ The purpose of porting CESM is to test data assimilation algorithms using
    /performance/file-striping
    /performance/darshan
    /performance/intel-vtune
+   /performance/arm-forge
 
 .. toctree::
    :maxdepth: 2
@@ -86,3 +87,9 @@ The purpose of porting CESM is to test data assimilation algorithms using
    :caption: NERSC Cori
 
    /cori/environment
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+
+   /README
