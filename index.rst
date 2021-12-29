@@ -53,6 +53,8 @@ The purpose of porting CESM is to test data assimilation algorithms using
    /cesm/cime-comp-mod
    /cesm/config-machines
    /cesm/cpus-per-task
+   /cesm/scientifically-supported-configuration
+   /cesm/branch-run
 
 .. toctree::
    :maxdepth: 2

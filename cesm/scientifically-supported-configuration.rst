@@ -1,12 +1,19 @@
-################
-Grid and compset
-################
-
+######################################
 Scientifically supported configuration
-======================================
+######################################
 
-The scientifically supported configuration for CAM6 is the ``FHIST`` compset is
-the ``f09_f09_mg17`` grid. For more information, see the
+Overview
+========
+
+As discussed in the :doc:`/cesm/grid-and-compset` page, the scientifically 
+supported configuration used in the experiment is the ``FHIST`` compset and the
+``f09_f09_mg17`` grid.
+
+Scientifically supported grid
+=============================
+
+The scientifically supported grid for the FHIST compset is the ``f09_f09_mg17``
+grid. For more information, see the
 `CAM documentation <https://ncar.github.io/CAM/doc/build/html/users_guide/atmospheric-configurations.html>`_.
 Efficiency testing should be done with this grid before moving on to the CAM6 
 Reanalysis grid.
