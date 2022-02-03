@@ -23,6 +23,7 @@ The purpose of porting CESM is to test data assimilation algorithms using
    
    /shaheen/environment
    /shaheen/slurm
+   /shaheen/filesystem
 
 .. toctree::
    :maxdepth: 2
