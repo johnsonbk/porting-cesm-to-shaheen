@@ -28,6 +28,13 @@ The purpose of porting CESM is to test data assimilation algorithms using
 .. toctree::
    :maxdepth: 2
    :hidden:
+   :caption: Aftermath
+
+   /aftermath/compiling
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
    :caption: DART
 
    /dart/compiling
