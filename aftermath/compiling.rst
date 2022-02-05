@@ -86,3 +86,21 @@ Rebuild the case.
 
    cat /lustre/scratch/x_johnsobk/FHIST.CESM.f09_f09_mg17.e001.n0003/bld/cesm.bldlog.220204-072500
 
+Third attempt
+-------------
+
+Trying to build with pio2.
+
+.. code-block::
+
+   cd /lustre/scratch/x_johnsobk/CESM/cime/scripts
+   ./create_newcase --case /lustre/scratch/x_johnsobk/cases/FHIST.CESM.PIO2.f09_f09_mg17.e002.n0003 --compset FHIST --res f09_f09_mg17 --machine shaheen --project k1421 --run-unsupported --ninst 3 --multi-driver --walltime 2:00:00
+   ./case.setup
+   ./xmlchange PIO_VERSION=2
+   ./case.build
+   /usr/bin/ld: /lustre/scratch/x_johnsobk/CESM/cime/src/externals/pio2/src/clib/pio_darray_int.c:1212: undefined reference to `nc_get_vara_float'
+
+.. error::
+
+   ERROR: BUILD FAIL: buildexe failed, cat /lustre/scratch/x_johnsobk/FHIST.CESM.PIO2.f09_f09_mg17.e002.n0003/bld/cesm.bldlog.220205-041905
+
