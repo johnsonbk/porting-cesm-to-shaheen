@@ -12,7 +12,7 @@ Filters
 
 .. note::
 
-   ``sort_obs_inc`` must be set to ``.true.`` for EnKF-esops.
+   ``sort_obs_inc`` must be set to ``.true.`` for EnKF-esops and EnKF.
 
 Inflation
 =========
