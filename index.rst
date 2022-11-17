@@ -45,6 +45,7 @@ The purpose of porting CESM is to test data assimilation algorithms using
    /dart/recovering-from-failed-assimilation
    /dart/nco
    /dart/experimental-configuration
+   /dart/testing-get-close-caching-fix
 
 .. toctree::
    :maxdepth: 2
