@@ -63,6 +63,19 @@ and three filters:
 It is only possible to build the ESKF filter with the two modified
 repositories.
 
+input.nml settings
+------------------
+
++--------+-----------------+------------------+
+| Filter | ``filter_kind`` | ``sort_obs_inc`` |
++========+=================+==================+
+| EAKF   | ``1``           | ``.false.``      |
++--------+-----------------+------------------+
+| ENKF   | ``2``           | ``.true.``       |
++--------+-----------------+------------------+
+| ESKF   | ``9``           | ``.true.``       |
++--------+-----------------+------------------+
+
 Differences
 ===========
 
@@ -72,4 +85,113 @@ There are 13 sensible differences to check between the various repositories:
 - Six possible differences between the ENKF experiments
 - 1 possible difference between the ESKF experiments
 
+EAKF experiments
+----------------
+
+All of the EAKF experiments reproduce.
+
+2020_original_EAKF-2020_modified_EAKF
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+|2020_original_EAKF-2020_modified_EAKF|
+
+2020_original_EAKF-2022_original_EAKF
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+|2020_original_EAKF-2022_original_EAKF|
+
+2020_original_EAKF-2022_modified_EAKF
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+|2020_original_EAKF-2022_modified_EAKF|
+
+2020_modified_EAKF-2022_original_EAKF
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+|2020_modified_EAKF-2022_original_EAKF|
+
+2020_modified_EAKF-2022_modified_EAKF
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+|2020_modified_EAKF-2022_modified_EAKF|
+
+2022_original_EAKF-2022_modified_EAKF
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+|2022_original_EAKF-2022_modified_EAKF|
+
+.. |2020_original_EAKF-2020_modified_EAKF| image:: images/2020_original_EAKF-2020_modified_EAKF.png
+
+.. |2020_original_EAKF-2022_original_EAKF| image:: images/2020_original_EAKF-2022_original_EAKF.png
+
+.. |2020_original_EAKF-2022_modified_EAKF| image:: images/2020_original_EAKF-2022_modified_EAKF.png
+
+.. |2020_modified_EAKF-2022_original_EAKF| image:: images/2020_modified_EAKF-2022_original_EAKF.png
+
+.. |2020_modified_EAKF-2022_modified_EAKF| image:: images/2020_modified_EAKF-2022_modified_EAKF.png
+
+.. |2022_original_EAKF-2022_modified_EAKF| image:: images/2022_original_EAKF-2022_modified_EAKF.png
+
+ENKF experiments
+----------------
+
+Only two of the ENKF comparisons reproduce:
+
+- the 2020 filters, both original and modified
+- the 2022 filters, both original and modified
+
+2020_original_ENKF-2020_modified_ENKF
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+|2020_original_ENKF-2020_modified_ENKF|
+
+2020_original_ENKF-2022_original_ENKF
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+|2020_original_ENKF-2022_original_ENKF|
+
+2020_original_ENKF-2022_modified_ENKF
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+|2020_original_ENKF-2022_modified_ENKF|
+
+2020_modified_ENKF-2022_original_ENKF
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+|2020_modified_ENKF-2022_original_ENKF|
+
+2020_modified_ENKF-2022_modified_ENKF
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+|2020_modified_ENKF-2022_modified_ENKF|
+
+2022_original_ENKF-2022_modified_ENKF
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+|2022_original_ENKF-2022_modified_ENKF|
+
+.. |2020_original_ENKF-2020_modified_ENKF| image:: images/2020_original_ENKF-2020_modified_ENKF.png
+
+.. |2020_original_ENKF-2022_original_ENKF| image:: images/2020_original_ENKF-2022_original_ENKF.png
+
+.. |2020_original_ENKF-2022_modified_ENKF| image:: images/2020_original_ENKF-2022_modified_ENKF.png
+
+.. |2020_modified_ENKF-2022_original_ENKF| image:: images/2020_modified_ENKF-2022_original_ENKF.png
+
+.. |2020_modified_ENKF-2022_modified_ENKF| image:: images/2020_modified_ENKF-2022_modified_ENKF.png
+
+.. |2022_original_ENKF-2022_modified_ENKF| image:: images/2022_original_ENKF-2022_modified_ENKF.png
+
+
+ESKF experiments
+----------------
+
+The ESKF experiments do not reproduce.
+
+2020_modified_ESKF-2022_modified_ESKF
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+|2020_modified_ESKF-2022_modified_ESKF|
+
+.. |2020_modified_ESKF-2022_modified_ESKF| image:: images/2020_modified_ESKF-2022_modified_ESKF.png
 
