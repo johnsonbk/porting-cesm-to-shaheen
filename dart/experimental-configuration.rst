@@ -14,6 +14,10 @@ Filters
 
    ``sort_obs_inc`` must be set to ``.true.`` for EnKF-esops and EnKF.
 
+.. important::
+
+   For Moha's diagnostics: ``compute_posterior = .true.``
+
 Inflation
 =========
 
@@ -28,6 +32,7 @@ The following files will be saved from the integration:
 - All ``obs_seq.final`` files
 - All prior inflation mean and standard deviation files
 - The preassim and output stages will be saved.
+
 
 References
 ==========
