@@ -107,5 +107,12 @@ The purpose of porting CESM is to test data assimilation algorithms using
 .. toctree::
    :maxdepth: 2
    :hidden:
+   :caption: NCAR Cheyenne
+
+   /cheyenne/getting-files-from-rda
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
 
    /README
